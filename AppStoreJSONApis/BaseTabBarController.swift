@@ -13,27 +13,21 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let redVC = UIViewController()
-        redVC.view.backgroundColor = .white
-        redVC.navigationItem.title = "Apps"
-        
-        let redNavController = UINavigationController(rootViewController: redVC)
-        redNavController.tabBarItem.title = "Apps"
-        redNavController.tabBarItem.image = #imageLiteral(resourceName: "apps")
-        redNavController.navigationBar.prefersLargeTitles = true
-        
-        let blueVC = UIViewController()
-        blueVC.view.backgroundColor = .white
-        blueVC.navigationItem.title = "Search"
-        
-        let blueNavController = UINavigationController(rootViewController: blueVC)
-        blueNavController.tabBarItem.title = "Search"
-        blueNavController.tabBarItem.image = UIImage(named: "search")
-        blueNavController.navigationBar.prefersLargeTitles = true
-        
         viewControllers = [
-            redNavController,
-            blueNavController
+            createNavController(viewController: UIViewController(), title: "Today", imageName: "today_icon"),
+            createNavController(viewController: UIViewController(), title: "Apps", imageName: "apps"),
+            createNavController(viewController: UIViewController(), title: "Search", imageName: "search")
         ]
+    }
+    
+    fileprivate func createNavController(viewController: UIViewController, title: String, imageName: String) -> UIViewController {
+        let navController = UINavigationController(rootViewController: viewController)
+        viewController.view.backgroundColor = .white
+        viewController.navigationItem.title = title
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = UIImage(named: imageName)
+        navController.navigationBar.prefersLargeTitles = true
+        
+        return navController
     }
 }
