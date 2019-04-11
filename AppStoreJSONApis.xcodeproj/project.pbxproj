@@ -58,11 +58,11 @@
 			children = (
 				DF07CCDF225FD86100A20310 /* AppDelegate.swift */,
 				DF07CCE1225FD86100A20310 /* ViewController.swift */,
-				DF07CCF1225FD9F000A20310 /* BaseTabBarController.swift */,
 				DF07CCE3225FD86100A20310 /* Main.storyboard */,
 				DF07CCE6225FD86600A20310 /* Assets.xcassets */,
 				DF07CCE8225FD86600A20310 /* LaunchScreen.storyboard */,
 				DF07CCEB225FD86600A20310 /* Info.plist */,
+				DF07CCF1225FD9F000A20310 /* BaseTabBarController.swift */,
 			);
 			path = AppStoreJSONApis;
 			sourceTree = "<group>";
