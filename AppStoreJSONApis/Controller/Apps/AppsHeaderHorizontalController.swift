@@ -1,5 +1,5 @@
 //
-//  AppsController.swift
+//  AppsHeaderHorizontalController.swift
 //  AppStoreJSONApis
 //
 //  Created by Steven Jemmott on 12/04/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppsController: BaseListController {
+class AppsHeaderHorizontalController: BaseListController {
     
     fileprivate let cellId = "id"
     
@@ -16,7 +16,11 @@ class AppsController: BaseListController {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
-        collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(AppsHeaderCell.self, forCellWithReuseIdentifier: cellId)
+        
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -24,20 +28,18 @@ class AppsController: BaseListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
         
         return cell
     }
-    
 }
 
-
-extension AppsController: UICollectionViewDelegateFlowLayout {
+extension AppsHeaderHorizontalController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 300)
+        return .init(width: view.frame.width - 48, height: view.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 16, left: 0, bottom: 0, right: 0)
+        return .init(top: 0, left: 16, bottom: 0, right: 0)
     }
 }
