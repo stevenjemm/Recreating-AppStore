@@ -13,12 +13,15 @@ class AppsSearchController: UICollectionViewController {
     
     fileprivate let cellId = "CellId"
     fileprivate var appResults = [_Result]()
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultsCell.self, forCellWithReuseIdentifier: cellId)
+        
+        setupSearchBar()
         
         fetchITunesApps()
     }
@@ -47,7 +50,7 @@ class AppsSearchController: UICollectionViewController {
     
     fileprivate func fetchITunesApps() {
         
-        Service.shared.fetchApps { (result) in
+        Service.shared.fetchApps(searchTerm: "instagram") { (result) in
             switch result {
             case .failure(let error):
                 print("Failed to fetch apps: ", error)
@@ -61,10 +64,34 @@ class AppsSearchController: UICollectionViewController {
         }
     }
     
+    fileprivate func setupSearchBar() {
+        definesPresentationContext = true
+        navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
 }
 
 extension AppsSearchController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width, height: 300)
+    }
+}
+
+extension AppsSearchController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Service.shared.fetchApps(searchTerm: searchText) { (result) in
+            switch result {
+            case .success(let results):
+                self.appResults = results
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Failed to fetch apps for \(searchText): ", error)
+            }
+        }
     }
 }
