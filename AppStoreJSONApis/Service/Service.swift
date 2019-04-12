@@ -14,7 +14,9 @@ class Service {
     func fetchApps(searchTerm: String, completion: @escaping (Result<[_Result], Error>) -> ()) {
         print("Fetching iTunes Apps from Service Layer")
         
-        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
+        let term = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        let urlString = "https://itunes.apple.com/search?term=\(term!)&entity=software"
         let url = URL(string: urlString)!
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
