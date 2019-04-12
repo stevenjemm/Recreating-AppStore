@@ -20,6 +20,8 @@ extension UIImageView {
     convenience init(cornerRadius: CGFloat) {
         self.init(image: nil)
         self.layer.cornerRadius = cornerRadius
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFit
     }

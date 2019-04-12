@@ -12,6 +12,7 @@ class AppsPageController: BaseListController {
     
     fileprivate let cellId = "id"
     fileprivate let headerId = "headerId"
+    var editorsChoiceGames: AppGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,15 @@ class AppsPageController: BaseListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         
+        cell.titleLabel.text = editorsChoiceGames?.feed.title
+        cell.horizontalController.appGroup = editorsChoiceGames
+        cell.horizontalController.collectionView.reloadData()
         return cell
     }
     
@@ -46,6 +50,12 @@ class AppsPageController: BaseListController {
             switch result {
             case .success(let appGroup):
                 print(appGroup.feed.results)
+                self.editorsChoiceGames = appGroup
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
             case .failure(let error):
                 print("Failed to fetch games: ", error)
             }
