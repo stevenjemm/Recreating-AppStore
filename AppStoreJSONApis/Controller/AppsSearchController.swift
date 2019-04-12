@@ -14,6 +14,13 @@ class AppsSearchController: UICollectionViewController {
     fileprivate let cellId = "CellId"
     fileprivate var appResults = [_Result]()
     fileprivate let searchController = UISearchController(searchResultsController: nil)
+    var timer: Timer?
+    
+    fileprivate let enterSearchTermLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Please enter search term above"
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +30,7 @@ class AppsSearchController: UICollectionViewController {
         
         setupSearchBar()
         
-        fetchITunesApps()
+//        fetchITunesApps()
     }
     
     
@@ -37,7 +44,14 @@ class AppsSearchController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return appResults.count
+        if appResults.isEmpty {
+            collectionView.setupEmptyState(with: "Please enter search term above")
+            return 0
+        } else {
+            collectionView.restore()
+            return appResults.count
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,16 +96,22 @@ extension AppsSearchController: UICollectionViewDelegateFlowLayout {
 
 extension AppsSearchController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        Service.shared.fetchApps(searchTerm: searchText) { (result) in
-            switch result {
-            case .success(let results):
-                self.appResults = results
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+        print(searchText)
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            Service.shared.fetchApps(searchTerm: searchText) { (result) in
+                switch result {
+                case .success(let results):
+                    self.appResults = results
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                case .failure(let error):
+                    print("Failed to fetch apps for \(searchText): ", error)
                 }
-            case .failure(let error):
-                print("Failed to fetch apps for \(searchText): ", error)
             }
-        }
+        })
+        
     }
 }
