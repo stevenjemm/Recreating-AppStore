@@ -21,6 +21,8 @@ class AppsSearchController: UICollectionViewController {
         fetchITunesApps()
     }
     
+    fileprivate var appResults = [Result]()
+    
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         
@@ -31,34 +33,34 @@ class AppsSearchController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return appResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultsCell
         
+        let appResult = appResults[indexPath.item]
+        
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
         return cell
     }
     
     fileprivate func fetchITunesApps() {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
-        let url = URL(string: urlString)!
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        Service.shared.fetchApps { (results, error) in
             guard error == nil else {
-                print("Failed to fetch apps: ", error!.localizedDescription)
+                print("Failed to fetch apps: ", error!)
                 return
             }
             
-            guard let data = data else { return }
+            self.appResults = results
             
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                searchResult.results.forEach({ print($0.trackName, $0.primaryGenreName) })
-            } catch {
-                print("Error decoding JSON: ", error.localizedDescription)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-        }.resume()
+        }
+
     }
     
     

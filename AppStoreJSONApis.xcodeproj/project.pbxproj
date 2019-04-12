@@ -18,6 +18,7 @@
 		DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFA225FEF3600A20310 /* UIView+Layout.swift */; };
 		DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFC225FF8F900A20310 /* VerticalStackView.swift */; };
 		DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFE2260310900A20310 /* SearchResult.swift */; };
+		DF07CD062260399200A20310 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD052260399200A20310 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DF07CCFA225FEF3600A20310 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		DF07CCFC225FF8F900A20310 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		DF07CCFE2260310900A20310 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		DF07CD052260399200A20310 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				DF07CCDF225FD86100A20310 /* AppDelegate.swift */,
+				DF07CD042260397100A20310 /* Service */,
 				DF07CCF3225FE49D00A20310 /* Controller */,
 				DF07CCE3225FD86100A20310 /* Main.storyboard */,
 				DF07CD02226031B300A20310 /* Model */,
@@ -112,6 +115,14 @@
 				DF07CCFE2260310900A20310 /* SearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DF07CD042260397100A20310 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CD052260399200A20310 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
 				DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */,
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
+				DF07CD062260399200A20310 /* Service.swift in Sources */,
 				DF07CCF2225FD9F000A20310 /* BaseTabBarController.swift in Sources */,
 				DF07CCF5225FE4E600A20310 /* AppsSearchController.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
