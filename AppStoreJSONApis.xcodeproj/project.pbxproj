@@ -17,6 +17,7 @@
 		DF07CCF7225FE7EE00A20310 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCF6225FE7EE00A20310 /* SearchResultsCell.swift */; };
 		DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFA225FEF3600A20310 /* UIView+Layout.swift */; };
 		DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFC225FF8F900A20310 /* VerticalStackView.swift */; };
+		DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFE2260310900A20310 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DF07CCF6225FE7EE00A20310 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		DF07CCFA225FEF3600A20310 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		DF07CCFC225FF8F900A20310 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		DF07CCFE2260310900A20310 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				DF07CCDF225FD86100A20310 /* AppDelegate.swift */,
 				DF07CCF3225FE49D00A20310 /* Controller */,
 				DF07CCE3225FD86100A20310 /* Main.storyboard */,
+				DF07CD02226031B300A20310 /* Model */,
 				DF07CCF8225FE7F200A20310 /* Views */,
 				DF07CCE6225FD86600A20310 /* Assets.xcassets */,
 				DF07CCF9225FEF1A00A20310 /* Helpers */,
@@ -101,6 +104,14 @@
 				DF07CCFA225FEF3600A20310 /* UIView+Layout.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DF07CD02226031B300A20310 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CCFE2260310900A20310 /* SearchResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 			files = (
 				DF07CCE2225FD86100A20310 /* ViewController.swift in Sources */,
 				DF07CCF7225FE7EE00A20310 /* SearchResultsCell.swift in Sources */,
+				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
 				DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */,
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
 				DF07CCF2225FD9F000A20310 /* BaseTabBarController.swift in Sources */,
@@ -329,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3552947V4D;
 				INFOPLIST_FILE = AppStoreJSONApis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,6 +360,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3552947V4D;
 				INFOPLIST_FILE = AppStoreJSONApis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
