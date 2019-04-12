@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class AppsSearchController: UICollectionViewController {
+class AppsSearchController: BaseListController {
     
     fileprivate let cellId = "CellId"
     fileprivate var appResults = [_Result]()
@@ -31,16 +31,6 @@ class AppsSearchController: UICollectionViewController {
         setupSearchBar()
         
 //        fetchITunesApps()
-    }
-    
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -21,6 +21,10 @@
 		DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CCFE2260310900A20310 /* SearchResult.swift */; };
 		DF07CD062260399200A20310 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD052260399200A20310 /* Service.swift */; };
 		DF07CD08226054D300A20310 /* CollectionView+BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD07226054D300A20310 /* CollectionView+BackgroundView.swift */; };
+		DF07CD0C2260CEC000A20310 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD0B2260CEBF00A20310 /* AppsController.swift */; };
+		DF07CD0F2260CFFF00A20310 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD0E2260CFFF00A20310 /* BaseListController.swift */; };
+		DF07CD132260D15100A20310 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD122260D15100A20310 /* AppsGroupCell.swift */; };
+		DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		DF07CCFE2260310900A20310 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		DF07CD052260399200A20310 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DF07CD07226054D300A20310 /* CollectionView+BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionView+BackgroundView.swift"; sourceTree = "<group>"; };
+		DF07CD0B2260CEBF00A20310 /* AppsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		DF07CD0E2260CFFF00A20310 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
+		DF07CD122260D15100A20310 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
+		DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +105,9 @@
 				DF07CCDF225FD86100A20310 /* AppDelegate.swift */,
 				DF07CD042260397100A20310 /* Service */,
 				DF07CCF3225FE49D00A20310 /* Controller */,
+				DF07CCF8225FE7F200A20310 /* Views */,
 				DF07CCE3225FD86100A20310 /* Main.storyboard */,
 				DF07CD02226031B300A20310 /* Model */,
-				DF07CCF8225FE7F200A20310 /* Views */,
 				DF07CCE6225FD86600A20310 /* Assets.xcassets */,
 				DF07CCF9225FEF1A00A20310 /* Helpers */,
 				DF07CCE8225FD86600A20310 /* LaunchScreen.storyboard */,
@@ -111,9 +119,11 @@
 		DF07CCF3225FE49D00A20310 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DF07CD102260D04600A20310 /* Search */,
+				DF07CD0D2260CF0700A20310 /* Apps */,
 				DF07CCE1225FD86100A20310 /* ViewController.swift */,
 				DF07CCF1225FD9F000A20310 /* BaseTabBarController.swift */,
-				DF07CCF4225FE4E600A20310 /* AppsSearchController.swift */,
+				DF07CD0E2260CFFF00A20310 /* BaseListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +131,7 @@
 		DF07CCF8225FE7F200A20310 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF07CD112260D13B00A20310 /* Apps */,
 				DF07CCF6225FE7EE00A20310 /* SearchResultsCell.swift */,
 				DF07CCFC225FF8F900A20310 /* VerticalStackView.swift */,
 			);
@@ -150,6 +161,31 @@
 				DF07CD052260399200A20310 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DF07CD0D2260CF0700A20310 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CD0B2260CEBF00A20310 /* AppsController.swift */,
+				DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		DF07CD102260D04600A20310 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CCF4225FE4E600A20310 /* AppsSearchController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DF07CD112260D13B00A20310 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CD122260D15100A20310 /* AppsGroupCell.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,15 +301,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF07CCE2225FD86100A20310 /* ViewController.swift in Sources */,
+				DF07CD0C2260CEC000A20310 /* AppsController.swift in Sources */,
 				DF07CCF7225FE7EE00A20310 /* SearchResultsCell.swift in Sources */,
 				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
 				DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */,
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
+				DF07CD132260D15100A20310 /* AppsGroupCell.swift in Sources */,
 				DF07CD062260399200A20310 /* Service.swift in Sources */,
 				DF07CCF2225FD9F000A20310 /* BaseTabBarController.swift in Sources */,
 				DF07CD08226054D300A20310 /* CollectionView+BackgroundView.swift in Sources */,
 				DF07CCF5225FE4E600A20310 /* AppsSearchController.swift in Sources */,
+				DF07CD0F2260CFFF00A20310 /* BaseListController.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
+				DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
