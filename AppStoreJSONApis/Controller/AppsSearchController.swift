@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsSearchController: UICollectionViewController {
     
     fileprivate let cellId = "CellId"
+    fileprivate var appResults = [_Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,6 @@ class AppsSearchController: UICollectionViewController {
         fetchITunesApps()
     }
     
-    fileprivate var appResults = [_Result]()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -39,11 +40,8 @@ class AppsSearchController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultsCell
         
-        let appResult = appResults[indexPath.item]
+        cell.appResult = appResults[indexPath.item]
         
-        cell.nameLabel.text = appResult.trackName
-        cell.categoryLabel.text = appResult.primaryGenreName
-        cell.ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
         return cell
     }
     
@@ -61,26 +59,12 @@ class AppsSearchController: UICollectionViewController {
                 }
             }
         }
-//        Service.shared.fetchApps { (results, error) in
-//            guard error == nil else {
-//                print("Failed to fetch apps: ", error!)
-//                return
-//            }
-//            
-//            self.appResults = results
-//            
-//            DispatchQueue.main.async {
-//                self.collectionView.reloadData()
-//            }
-//        }
-
     }
-    
     
 }
 
 extension AppsSearchController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 350)
+        return .init(width: view.frame.width, height: 300)
     }
 }
