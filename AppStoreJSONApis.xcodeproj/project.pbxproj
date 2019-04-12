@@ -30,6 +30,7 @@
 		DF07CD1B226140D200A20310 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD1A226140D200A20310 /* AppsPageHeader.swift */; };
 		DF07CD1D2261421200A20310 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD1C2261421200A20310 /* AppsHeaderHorizontalController.swift */; };
 		DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD1E226144C200A20310 /* AppsHeaderCell.swift */; };
+		DF07CD21226149FD00A20310 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD20226149FD00A20310 /* AppGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		DF07CD1A226140D200A20310 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		DF07CD1C2261421200A20310 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		DF07CD1E226144C200A20310 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		DF07CD20226149FD00A20310 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				DF07CCFE2260310900A20310 /* SearchResult.swift */,
+				DF07CD20226149FD00A20310 /* AppGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				DF07CCF5225FE4E600A20310 /* AppsSearchController.swift in Sources */,
 				DF07CD192261255700A20310 /* Extensions.swift in Sources */,
 				DF07CD0F2260CFFF00A20310 /* BaseListController.swift in Sources */,
+				DF07CD21226149FD00A20310 /* AppGroup.swift in Sources */,
 				DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
 				DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */,

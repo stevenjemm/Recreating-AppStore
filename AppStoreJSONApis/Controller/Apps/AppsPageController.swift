@@ -19,6 +19,8 @@ class AppsPageController: BaseListController {
         collectionView.backgroundColor = .white
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        
+        fetchData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -35,6 +37,19 @@ class AppsPageController: BaseListController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
         return cell
+    }
+    
+    // MARK: - Helper Methods
+    fileprivate func fetchData() {
+        print("Fetching new JSON Data...")
+        Service.shared.fetchGames { (result) in
+            switch result {
+            case .success(let appGroup):
+                print(appGroup.feed.results)
+            case .failure(let error):
+                print("Failed to fetch games: ", error)
+            }
+        }
     }
     
 }
