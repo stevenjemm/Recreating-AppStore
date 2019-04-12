@@ -21,7 +21,7 @@ class AppsSearchController: UICollectionViewController {
         fetchITunesApps()
     }
     
-    fileprivate var appResults = [Result]()
+    fileprivate var appResults = [_Result]()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -48,18 +48,31 @@ class AppsSearchController: UICollectionViewController {
     }
     
     fileprivate func fetchITunesApps() {
-        Service.shared.fetchApps { (results, error) in
-            guard error == nil else {
-                print("Failed to fetch apps: ", error!)
-                return
-            }
-            
-            self.appResults = results
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+        
+        Service.shared.fetchApps { (result) in
+            switch result {
+            case .failure(let error):
+                print("Failed to fetch apps: ", error)
+            case .success(let results):
+                self.appResults = results
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
         }
+//        Service.shared.fetchApps { (results, error) in
+//            guard error == nil else {
+//                print("Failed to fetch apps: ", error!)
+//                return
+//            }
+//            
+//            self.appResults = results
+//            
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
 
     }
     

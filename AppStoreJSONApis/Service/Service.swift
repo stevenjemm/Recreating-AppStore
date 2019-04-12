@@ -11,7 +11,7 @@ import Foundation
 class Service {
     static let shared = Service()   // Singleton
     
-    func fetchApps(completion: @escaping ([Result], Error?) -> ()) {
+    func fetchApps(completion: @escaping (Result<[_Result], Error>) -> ()) {
         print("Fetching iTunes Apps from Service Layer")
         
         let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
@@ -20,7 +20,7 @@ class Service {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 print("Failed to fetch apps: ", error!.localizedDescription)
-                completion([], error)
+                completion(.failure(error!))
                 return
             }
             
@@ -28,10 +28,10 @@ class Service {
             
             do {
                 let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                completion(searchResult.results, nil)
+                completion(.success(searchResult.results))
             } catch {
                 print("Error decoding JSON: ", error.localizedDescription)
-                completion([], error)
+                completion(.failure(error))
             }
             }.resume()
 
