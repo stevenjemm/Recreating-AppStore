@@ -38,8 +38,7 @@ class AppsPageController: BaseListController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         
         cell.titleLabel.text = editorsChoiceGames?.feed.title
-        cell.horizontalController.appGroup = editorsChoiceGames
-        cell.horizontalController.collectionView.reloadData()
+        cell.horizontalController.appGroup = editorsChoiceGames     // Property Observer on appGroup to reload CollectionView
         return cell
     }
     

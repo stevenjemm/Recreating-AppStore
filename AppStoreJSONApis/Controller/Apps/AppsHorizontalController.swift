@@ -15,7 +15,11 @@ class AppsHorizontalController: BaseListController {
     let topBottomPadding: CGFloat = 12
     let lineSpacing: CGFloat = 10
     
-    var appGroup: AppGroup?
+    var appGroup: AppGroup? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
