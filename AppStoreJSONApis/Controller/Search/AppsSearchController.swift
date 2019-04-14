@@ -58,8 +58,8 @@ class AppsSearchController: BaseListController {
             switch result {
             case .failure(let error):
                 print("Failed to fetch apps: ", error)
-            case .success(let results):
-                self.appResults = results
+            case .success(let searchResults):
+                self.appResults = searchResults.results
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -92,8 +92,8 @@ extension AppsSearchController: UISearchBarDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             Service.shared.fetchApps(searchTerm: searchText) { (result) in
                 switch result {
-                case .success(let results):
-                    self.appResults = results
+                case .success(let searchResults):
+                    self.appResults = searchResults.results
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }

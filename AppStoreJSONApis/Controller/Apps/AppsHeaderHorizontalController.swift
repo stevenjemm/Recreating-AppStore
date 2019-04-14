@@ -38,7 +38,7 @@ class AppsHeaderHorizontalController: BaseListController {
         let app = socialApps[indexPath.item]
         cell.companyLabel.text = app.name
         cell.titleLabel.text = app.tagline
-        cell.imageView.sd_setImage(with: URL(string: app.imageUrl))
+        cell.imageView.sd_setImage(with: URL(string: app.imageUrl), placeholderImage: nil, options: [.progressiveLoad])
         
         return cell
     }
