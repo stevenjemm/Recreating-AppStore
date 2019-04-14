@@ -10,9 +10,11 @@ import UIKit
 
 class AppsPageController: BaseListController {
     
+    // MARK: - Properties
     fileprivate let cellId = "id"
     fileprivate let headerId = "headerId"
-    var editorsChoiceGames: AppGroup?
+    var groups = [AppGroup]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,16 @@ class AppsPageController: BaseListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return groups.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         
-        cell.titleLabel.text = editorsChoiceGames?.feed.title
-        cell.horizontalController.appGroup = editorsChoiceGames     // Property Observer on appGroup to reload CollectionView
+        let appGroup = groups[indexPath.item]
+        
+        cell.titleLabel.text = appGroup.feed.title
+        cell.horizontalController.appGroup = appGroup     // Property Observer on appGroup to reload CollectionView
         return cell
     }
     
@@ -48,8 +52,38 @@ class AppsPageController: BaseListController {
         Service.shared.fetchGames { (result) in
             switch result {
             case .success(let appGroup):
-                print(appGroup.feed.results)
-                self.editorsChoiceGames = appGroup
+                
+                self.groups.append(appGroup)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print("Failed to fetch games: ", error)
+            }
+        }
+        
+        Service.shared.fetchTopGrossing { (result) in
+            switch result {
+            case .success(let appGroup):
+                
+                self.groups.append(appGroup)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print("Failed to fetch games: ", error)
+            }
+        }
+        
+        Service.shared.fetchFreeApps { (result) in
+            switch result {
+            case .success(let appGroup):
+                
+                self.groups.append(appGroup)
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -74,6 +108,6 @@ extension AppsPageController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 300)
+        return .init(width: view.frame.width, height: 0)
     }
 }

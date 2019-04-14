@@ -39,12 +39,30 @@ class Service {
 
     }
     
-    func fetchGames(completion: @escaping (Result<AppGroup, Error>) -> ()) {
-//        https://rss.itunes.apple.com/api/v1/us/ios-apps/new-games-we-love/all/50/explicit.json
-//        https://rss.itunes.apple.com/api/v1/us/ios-apps/top-grossing/all/50/explicit.json
-//        https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json
+    //        https://rss.itunes.apple.com/api/v1/us/ios-apps/new-games-we-love/all/50/explicit.json
+    //        https://rss.itunes.apple.com/api/v1/us/ios-apps/top-grossing/all/50/explicit.json
+    //        https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json
+    
+    func fetchTopGrossing(completion: @escaping (Result<AppGroup, Error>) -> ()) {
         
-        let url = URL(string: "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json")!
+        let urlString = "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-grossing/all/50/explicit.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+        
+    }
+    
+    func fetchGames(completion: @escaping (Result<AppGroup, Error>) -> ()) {
+
+        fetchAppGroup(urlString: "https://rss.itunes.apple.com/api/v1/us/ios-apps/new-games-we-love/all/50/explicit.json", completion: completion)
+    }
+    
+    func fetchFreeApps(completion: @escaping (Result<AppGroup, Error>) -> ()) {
+        
+        fetchAppGroup(urlString: "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json", completion: completion)
+    }
+    
+    fileprivate func fetchAppGroup(urlString: String, completion: @escaping (Result<AppGroup, Error>) -> ()) {
+        
+        let url = URL(string: urlString)!
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
@@ -53,20 +71,16 @@ class Service {
                 return
             }
             
-//            print(String(data: data!, encoding: .utf8))
-            
             guard let data = data else { return }
             
             do {
                 let appGroup = try JSONDecoder().decode(AppGroup.self, from: data)
-//                print(appGroup.feed.results)
-//                appGroup.feed.results.forEach({ print($0.name) })
                 completion(.success(appGroup))
                 
             } catch {
                 print("Error decoding json: ", error)
                 completion(.failure(error))
             }
-        }.resume()
+            }.resume()
     }
 }
