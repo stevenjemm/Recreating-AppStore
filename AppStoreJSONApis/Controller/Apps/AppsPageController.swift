@@ -14,6 +14,15 @@ class AppsPageController: BaseListController {
     fileprivate let cellId = "id"
     fileprivate let headerId = "headerId"
     var groups = [AppGroup]()
+    var socialApps = [SocialApp]()
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        aiv.color = .black
+        aiv.hidesWhenStopped = true
+        aiv.startAnimating()
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +31,15 @@ class AppsPageController: BaseListController {
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.fillSuperview()
+        
         fetchData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
+        header.appHeaderHorizontalController.socialApps = self.socialApps
         
         return header
     }
@@ -102,8 +115,25 @@ class AppsPageController: BaseListController {
             }
         }
         
+        dispatchGroup.enter()
+        Service.shared.fetchSocialApps { (result) in
+            dispatchGroup.leave()
+            switch result {
+            case .success(let apps):
+                
+                self.socialApps = apps
+//                group3 = objects
+                
+            case .failure(let error):
+                print("Failed to fetch social apps: ", error)
+            }
+        }
+        
+        // Completion Block for DispatchGroup
         dispatchGroup.notify(queue: .main) {
             print("Completed your dispatch group tasks")
+            
+            self.activityIndicatorView.stopAnimating()
             
             if let group = group1 {
                 self.groups.append(group)
@@ -132,6 +162,6 @@ extension AppsPageController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 0)
+        return .init(width: view.frame.width, height: 300)
     }
 }
