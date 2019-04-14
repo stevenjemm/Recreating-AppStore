@@ -21,6 +21,8 @@ class AppsHorizontalController: HorizontalSnappingController {
         }
     }
     
+    var didSelectHandler: ((FeedResult) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,14 @@ class AppsHorizontalController: HorizontalSnappingController {
         cell.companyLabel.text = app?.artistName
         cell.imageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = appGroup?.feed.results[indexPath.item] {
+            
+            didSelectHandler?(app)
+        }
+        
     }
     
 }

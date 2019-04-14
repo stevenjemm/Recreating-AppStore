@@ -55,6 +55,14 @@ class AppsPageController: BaseListController {
         
         cell.titleLabel.text = appGroup.feed.title
         cell.horizontalController.appGroup = appGroup     // Property Observer on appGroup to reload CollectionView
+        cell.horizontalController.didSelectHandler = { [weak self] feedResult in
+            
+            let detailVC = AppDetailController()
+            detailVC.navigationItem.title = feedResult.name
+            
+            self?.navigationController?.pushViewController(detailVC, animated: true)
+            
+        }
         return cell
     }
     

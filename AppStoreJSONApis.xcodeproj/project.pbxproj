@@ -34,6 +34,7 @@
 		DF07CD232262BB3800A20310 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD222262BB3800A20310 /* SocialApp.swift */; };
 		DF07CD252262E67B00A20310 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD242262E67B00A20310 /* HorizontalSnappingController.swift */; };
 		DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */; };
+		DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD2822638B0C00A20310 /* AppDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		DF07CD222262BB3800A20310 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		DF07CD242262E67B00A20310 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
+		DF07CD2822638B0C00A20310 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				DF07CD0B2260CEBF00A20310 /* AppsPageController.swift */,
 				DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */,
 				DF07CD1C2261421200A20310 /* AppsHeaderHorizontalController.swift */,
+				DF07CD2822638B0C00A20310 /* AppDetailController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				DF07CD252262E67B00A20310 /* HorizontalSnappingController.swift in Sources */,
 				DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */,
 				DF07CCF2225FD9F000A20310 /* BaseTabBarController.swift in Sources */,
+				DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */,
 				DF07CD08226054D300A20310 /* CollectionView+BackgroundView.swift in Sources */,
 				DF07CD1D2261421200A20310 /* AppsHeaderHorizontalController.swift in Sources */,
 				DF07CD1B226140D200A20310 /* AppsPageHeader.swift in Sources */,
