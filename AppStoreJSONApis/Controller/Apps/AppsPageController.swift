@@ -15,7 +15,6 @@ class AppsPageController: BaseListController {
     fileprivate let headerId = "headerId"
     var groups = [AppGroup]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,50 +47,75 @@ class AppsPageController: BaseListController {
     
     // MARK: - Helper Methods
     fileprivate func fetchData() {
-        print("Fetching new JSON Data...")
+        
+        var group1: AppGroup?
+        var group2: AppGroup?
+        var group3: AppGroup?
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         Service.shared.fetchGames { (result) in
+            
+            dispatchGroup.leave()
             switch result {
             case .success(let appGroup):
                 
-                self.groups.append(appGroup)
+                group1 = appGroup
                 
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+//                self.groups.append(appGroup)
+//
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
                 
             case .failure(let error):
                 print("Failed to fetch games: ", error)
             }
         }
         
+        dispatchGroup.enter()
         Service.shared.fetchTopGrossing { (result) in
+            
+            dispatchGroup.leave()
             switch result {
             case .success(let appGroup):
                 
-                self.groups.append(appGroup)
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+                group2 = appGroup
                 
             case .failure(let error):
-                print("Failed to fetch games: ", error)
+                print("Failed to fetch topGrossing apps: ", error)
             }
         }
         
+        dispatchGroup.enter()
         Service.shared.fetchFreeApps { (result) in
+            
+            dispatchGroup.leave()
             switch result {
             case .success(let appGroup):
                 
-                self.groups.append(appGroup)
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+                group3 = appGroup
                 
             case .failure(let error):
-                print("Failed to fetch games: ", error)
+                print("Failed to fetch free apps: ", error)
             }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("Completed your dispatch group tasks")
+            
+            if let group = group1 {
+                self.groups.append(group)
+            }
+            if let group = group2 {
+                self.groups.append(group)
+            }
+            if let group = group3 {
+                self.groups.append(group)
+            }
+            
+            self.collectionView.reloadData()
         }
     }
     
