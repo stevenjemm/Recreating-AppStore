@@ -52,6 +52,12 @@ class AppsSearchController: BaseListController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = String(self.appResults[indexPath.item].trackId)
+        let appDetailController = AppDetailController(appId: appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+    
     fileprivate func fetchITunesApps() {
         
         Service.shared.fetchApps(searchTerm: "instagram") { (result) in

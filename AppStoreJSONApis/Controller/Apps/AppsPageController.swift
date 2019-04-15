@@ -40,6 +40,11 @@ class AppsPageController: BaseListController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
         header.appHeaderHorizontalController.socialApps = self.socialApps
+        header.appHeaderHorizontalController.socialAppHandler = { [weak self] socialApp in
+            
+            let appDetailController = AppDetailController(appId: socialApp.id)
+            self?.navigationController?.pushViewController(appDetailController, animated: true)
+        }
         
         return header
     }
@@ -57,14 +62,13 @@ class AppsPageController: BaseListController {
         cell.horizontalController.appGroup = appGroup     // Property Observer on appGroup to reload CollectionView
         cell.horizontalController.didSelectHandler = { [weak self] feedResult in
             
-            let detailVC = AppDetailController()
-            detailVC.appId = feedResult.id
-            
+            let detailVC = AppDetailController(appId: feedResult.id)
             self?.navigationController?.pushViewController(detailVC, animated: true)
             
         }
         return cell
     }
+    
     
     // MARK: - Helper Methods
     fileprivate func fetchData() {

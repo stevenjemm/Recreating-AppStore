@@ -82,7 +82,7 @@ class Service {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                print("Error getting social Apps: ", error!.localizedDescription)
+                print("Error getting data: ", error!.localizedDescription)
                 completion(.failure(error!))
                 return
             }

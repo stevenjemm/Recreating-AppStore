@@ -42,9 +42,9 @@ class PreviewScreenshotsController: HorizontalSnappingController {
 
 extension PreviewScreenshotsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.height * 9 / 16
+        let width = (view.frame.height - 20) * 9 / 16
         
-        return .init(width: width, height: view.frame.height)
+        return .init(width: width, height: view.frame.height - 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

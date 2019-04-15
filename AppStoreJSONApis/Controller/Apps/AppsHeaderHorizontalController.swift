@@ -17,6 +17,8 @@ class AppsHeaderHorizontalController: HorizontalSnappingController {
         }
     }
     
+    var socialAppHandler: ((SocialApp) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +36,19 @@ class AppsHeaderHorizontalController: HorizontalSnappingController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
         
         let app = socialApps[indexPath.item]
-        cell.companyLabel.text = app.name
-        cell.titleLabel.text = app.tagline
-        cell.imageView.sd_setImage(with: URL(string: app.imageUrl), placeholderImage: nil, options: [.progressiveLoad])
+        cell.app = app
+//        cell.companyLabel.text = app.name
+//        cell.titleLabel.text = app.tagline
+//        cell.imageView.sd_setImage(with: URL(string: app.imageUrl), placeholderImage: nil, options: [.progressiveLoad])
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        socialAppHandler?(socialApps[indexPath.item])
+//        let appDetailController = AppDetailController(appId: socialApps[indexPath.item].id)
+//        navigationController?.pushViewController(appDetailController, animated: true)
     }
 }
 

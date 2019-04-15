@@ -17,46 +17,17 @@ class AppDetailController: BaseListController {
     var app: _Result?
     var reviews: Reviews?
     
-    var appId: String! {
-        didSet {
-            let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (searchResult: Result<SearchResult, Error>) in
-                switch searchResult {
-                case .success(let results):
-                    
-                    let app = results.results.first
-                    self.app = app
-                    
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    print("Error returning results: ", error)
-
-                }
-            }
-            
-            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
-            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Result<Reviews, Error>) in
-                // Get some data from itunes
-                switch reviews {
-                case .success(let reviewData):
-                    
-                    self.reviews = reviewData
-                    
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    print("Error returning reviews: ", error)
-                    
-                }
-            }
-        }
+    fileprivate let appId: String
+    
+    init(appId: String) {
+        self.appId = appId
+        super.init()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +37,46 @@ class AppDetailController: BaseListController {
         collectionView.register(AppDetailCell.self, forCellWithReuseIdentifier: detailCellId)
         collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: previewCellId)
         collectionView.register(ReviewRowCell.self, forCellWithReuseIdentifier: reviewRowCellId)
+        
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId)"
+        Service.shared.fetchGenericJSONData(urlString: urlString) { (searchResult: Result<SearchResult, Error>) in
+            switch searchResult {
+            case .success(let results):
+                
+                let app = results.results.first
+                self.app = app
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print("Error returning results: ", error)
+                
+            }
+        }
+        
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId)/sortby=mostrecent/json?l=en&cc=us"
+        Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Result<Reviews, Error>) in
+            // Get some data from itunes
+            switch reviews {
+            case .success(let reviewData):
+                
+                self.reviews = reviewData
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print("Error returning reviews: ", error)
+                
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
