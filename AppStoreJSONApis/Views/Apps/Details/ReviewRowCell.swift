@@ -9,7 +9,7 @@ import UIKit
 
 class ReviewRowCell: UICollectionViewCell {
     
-    let titleLabel = UILabel(text: "Review Title", font: .boldSystemFont(ofSize: 24))
+    let titleLabel = UILabel(text: "Reviews", font: .boldSystemFont(ofSize: 24))
     let reviewsController = ReviewsController()
     
     override init(frame: CGRect) {
