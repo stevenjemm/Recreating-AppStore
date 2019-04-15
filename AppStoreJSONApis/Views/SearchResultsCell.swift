@@ -100,10 +100,10 @@ class SearchResultsCell: UICollectionViewCell {
         screenshotStackView.spacing = 10
         screenshotStackView.distribution = .fillEqually
         
-        let overallStackView = VerticalStackView(arrangedSubviews: [infoTopStackView, screenshotStackView], spacing: 16)
+        let overallStackView = VerticalStackView(arrangedSubviews: [infoTopStackView, screenshotStackView], spacing: 20)
         
         addSubview(overallStackView)
-        overallStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
+        overallStackView.fillSuperview(padding: .init(top: 20, left: Constants.leftRightPadding, bottom: 20, right: Constants.leftRightPadding))
         
     }
     

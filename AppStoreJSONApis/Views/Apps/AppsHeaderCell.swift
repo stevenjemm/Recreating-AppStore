@@ -32,7 +32,7 @@ class AppsHeaderCell: UICollectionViewCell {
         
         let stackView = VerticalStackView(arrangedSubviews: [companyLabel, titleLabel, imageView], spacing: 12)
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        stackView.fillSuperview(padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {

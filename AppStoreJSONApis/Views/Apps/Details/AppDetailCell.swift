@@ -51,7 +51,7 @@ class AppDetailCell: UICollectionViewCell {
         
         let stackView = VerticalStackView(arrangedSubviews: [horizontalStackView, whatsNewLabel, versionLabel, releaseNotesLabel], spacing: 16)
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        stackView.fillSuperview(padding: .init(top: 20, left: Constants.leftRightPadding, bottom: 20, right: Constants.leftRightPadding))
     }
     
     required init?(coder aDecoder: NSCoder) {

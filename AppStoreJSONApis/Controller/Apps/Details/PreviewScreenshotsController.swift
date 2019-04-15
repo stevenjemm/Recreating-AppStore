@@ -23,7 +23,7 @@ class PreviewScreenshotsController: HorizontalSnappingController {
         
         collectionView.backgroundColor = .white
         collectionView.register(ScreenshotCell.self, forCellWithReuseIdentifier: screenshotCellId)
-        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.contentInset = .init(top: 0, left: Constants.leftRightPadding, bottom: 0, right: Constants.leftRightPadding)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,6 +48,6 @@ extension PreviewScreenshotsController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 0, bottom: 16, right: 0)
+        return .init(top: 0, left: 0, bottom: 20, right: 0)
     }
 }

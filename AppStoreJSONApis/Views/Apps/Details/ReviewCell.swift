@@ -61,7 +61,7 @@ class ReviewCell: UICollectionViewCell {
         titleLabel.setContentCompressionResistancePriority(.init(0), for: .horizontal)
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 20, left: Constants.leftRightPadding, bottom: 0, right: Constants.leftRightPadding))
 //        stackView.fillSuperview(padding: .init(top: 12, left: 12, bottom: 12, right: 12))
     }
     

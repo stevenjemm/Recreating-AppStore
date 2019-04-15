@@ -18,7 +18,7 @@ class ReviewRowCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(reviewsController.view)
         
-        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: Constants.leftRightPadding, bottom: 0, right: Constants.leftRightPadding))
         reviewsController.view.anchor(top: titleLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
         
     }
