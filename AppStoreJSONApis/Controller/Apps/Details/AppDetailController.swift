@@ -12,6 +12,7 @@ class AppDetailController: BaseListController {
     
     // MARK: - Properties
     private let detailCellId = "detailCellId"
+    private let previewCellId = "previewCellId"
     var app: _Result?
     
     var appId: String! {
@@ -43,30 +44,45 @@ class AppDetailController: BaseListController {
         navigationItem.largeTitleDisplayMode = .never
         
         collectionView.register(AppDetailCell.self, forCellWithReuseIdentifier: detailCellId)
+        collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: previewCellId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellId, for: indexPath) as! AppDetailCell
-        cell.app = self.app
         
-        return cell
+        if indexPath.item == 0 {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: detailCellId, for: indexPath) as! AppDetailCell
+            cell.app = self.app
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: previewCellId, for: indexPath) as! PreviewCell
+            cell.horizontalController.app = self.app
+            
+            return cell
+        }
     }
 }
 
 extension AppDetailController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size: CGSize = .init(width: view.frame.width, height: CGFloat.greatestFiniteMagnitude)
-        let dummyCell = AppDetailCell(frame: .init(origin: .zero, size: size))
-        dummyCell.app = self.app
-        dummyCell.layoutIfNeeded()
-        
-        let estimatedSize = dummyCell.systemLayoutSizeFitting(size)
-        
-        return .init(width: view.frame.width, height: estimatedSize.height)
+        if indexPath.item == 0 {
+            
+            let size: CGSize = .init(width: view.frame.width, height: 1000)
+            let dummyCell = AppDetailCell(frame: .init(origin: .zero, size: size))
+            dummyCell.app = self.app
+            dummyCell.layoutIfNeeded()
+            
+            let estimatedSize = dummyCell.systemLayoutSizeFitting(size)
+            
+            return .init(width: view.frame.width, height: estimatedSize.height)
+        } else {
+            return .init(width: view.frame.width, height: 500)
+        }
     }
 }

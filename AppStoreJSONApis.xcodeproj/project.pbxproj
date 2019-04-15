@@ -36,6 +36,9 @@
 		DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */; };
 		DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD2822638B0C00A20310 /* AppDetailController.swift */; };
 		DF07CD4E2263E18F00A20310 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */; };
+		DF07CD512264292000A20310 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD502264292000A20310 /* PreviewCell.swift */; };
+		DF07CD5322642AAE00A20310 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD5222642AAD00A20310 /* PreviewScreenshotsController.swift */; };
+		DF07CD5522642C0700A20310 /* ScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD5422642C0700A20310 /* ScreenshotCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		DF07CD2822638B0C00A20310 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 		DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
+		DF07CD502264292000A20310 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		DF07CD5222642AAD00A20310 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
+		DF07CD5422642C0700A20310 /* ScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				DF07CD2822638B0C00A20310 /* AppDetailController.swift */,
+				DF07CD5222642AAD00A20310 /* PreviewScreenshotsController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -233,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */,
+				DF07CD502264292000A20310 /* PreviewCell.swift */,
+				DF07CD5422642C0700A20310 /* ScreenshotCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -353,6 +362,7 @@
 				DF07CD232262BB3800A20310 /* SocialApp.swift in Sources */,
 				DF07CD0C2260CEC000A20310 /* AppsPageController.swift in Sources */,
 				DF07CCF7225FE7EE00A20310 /* SearchResultsCell.swift in Sources */,
+				DF07CD5322642AAE00A20310 /* PreviewScreenshotsController.swift in Sources */,
 				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
 				DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */,
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
@@ -361,6 +371,7 @@
 				DF07CD252262E67B00A20310 /* HorizontalSnappingController.swift in Sources */,
 				DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */,
 				DF07CCF2225FD9F000A20310 /* BaseTabBarController.swift in Sources */,
+				DF07CD5522642C0700A20310 /* ScreenshotCell.swift in Sources */,
 				DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */,
 				DF07CD08226054D300A20310 /* CollectionView+BackgroundView.swift in Sources */,
 				DF07CD1D2261421200A20310 /* AppsHeaderHorizontalController.swift in Sources */,
@@ -371,6 +382,7 @@
 				DF07CD4E2263E18F00A20310 /* AppDetailCell.swift in Sources */,
 				DF07CD21226149FD00A20310 /* AppGroup.swift in Sources */,
 				DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */,
+				DF07CD512264292000A20310 /* PreviewCell.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
 				DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */,
 				DF07CD17226124AC00A20310 /* AppRowCell.swift in Sources */,
