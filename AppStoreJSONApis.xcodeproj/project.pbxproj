@@ -35,6 +35,7 @@
 		DF07CD252262E67B00A20310 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD242262E67B00A20310 /* HorizontalSnappingController.swift */; };
 		DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */; };
 		DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD2822638B0C00A20310 /* AppDetailController.swift */; };
+		DF07CD4E2263E18F00A20310 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		DF07CD242262E67B00A20310 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		DF07CD262262ECEF00A20310 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		DF07CD2822638B0C00A20310 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,10 +193,10 @@
 		DF07CD0D2260CF0700A20310 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				DF07CD4C2263E17900A20310 /* Details */,
 				DF07CD0B2260CEBF00A20310 /* AppsPageController.swift */,
 				DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */,
 				DF07CD1C2261421200A20310 /* AppsHeaderHorizontalController.swift */,
-				DF07CD2822638B0C00A20310 /* AppDetailController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -210,12 +212,29 @@
 		DF07CD112260D13B00A20310 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				DF07CD4F2263E31300A20310 /* Details */,
 				DF07CD122260D15100A20310 /* AppsGroupCell.swift */,
 				DF07CD16226124AC00A20310 /* AppRowCell.swift */,
 				DF07CD1A226140D200A20310 /* AppsPageHeader.swift */,
 				DF07CD1E226144C200A20310 /* AppsHeaderCell.swift */,
 			);
 			path = Apps;
+			sourceTree = "<group>";
+		};
+		DF07CD4C2263E17900A20310 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CD2822638B0C00A20310 /* AppDetailController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		DF07CD4F2263E31300A20310 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DF07CD4D2263E18F00A20310 /* AppDetailCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +368,7 @@
 				DF07CCF5225FE4E600A20310 /* AppsSearchController.swift in Sources */,
 				DF07CD192261255700A20310 /* Extensions.swift in Sources */,
 				DF07CD0F2260CFFF00A20310 /* BaseListController.swift in Sources */,
+				DF07CD4E2263E18F00A20310 /* AppDetailCell.swift in Sources */,
 				DF07CD21226149FD00A20310 /* AppGroup.swift in Sources */,
 				DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
