@@ -46,6 +46,9 @@
 		DF07CD66226528AE00A20310 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD65226528AE00A20310 /* TodayController.swift */; };
 		DF07CD692265293B00A20310 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD682265293B00A20310 /* TodayCell.swift */; };
 		DF07CD6B22652ED400A20310 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6A22652ED400A20310 /* Constants.swift */; };
+		DF07CD6D2265530F00A20310 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6C2265530F00A20310 /* AppFullscreenController.swift */; };
+		DF07CD6F2265551300A20310 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */; };
+		DF07CD712265656C00A20310 /* AppFullscreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,9 @@
 		DF07CD65226528AE00A20310 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
 		DF07CD682265293B00A20310 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		DF07CD6A22652ED400A20310 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DF07CD6C2265530F00A20310 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
+		DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
+		DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				DF07CD65226528AE00A20310 /* TodayController.swift */,
+				DF07CD6C2265530F00A20310 /* AppFullscreenController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -279,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				DF07CD682265293B00A20310 /* TodayCell.swift */,
+				DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */,
+				DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -399,6 +408,7 @@
 				DF07CD232262BB3800A20310 /* SocialApp.swift in Sources */,
 				DF07CD0C2260CEC000A20310 /* AppsPageController.swift in Sources */,
 				DF07CCF7225FE7EE00A20310 /* SearchResultsCell.swift in Sources */,
+				DF07CD6D2265530F00A20310 /* AppFullscreenController.swift in Sources */,
 				DF07CD5322642AAE00A20310 /* PreviewScreenshotsController.swift in Sources */,
 				DF07CD66226528AE00A20310 /* TodayController.swift in Sources */,
 				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
@@ -415,6 +425,7 @@
 				DF07CD2922638B0C00A20310 /* AppDetailController.swift in Sources */,
 				DF07CD08226054D300A20310 /* CollectionView+BackgroundView.swift in Sources */,
 				DF07CD1D2261421200A20310 /* AppsHeaderHorizontalController.swift in Sources */,
+				DF07CD6F2265551300A20310 /* AppFullscreenDescriptionCell.swift in Sources */,
 				DF07CD1B226140D200A20310 /* AppsPageHeader.swift in Sources */,
 				DF07CCF5225FE4E600A20310 /* AppsSearchController.swift in Sources */,
 				DF07CD192261255700A20310 /* Extensions.swift in Sources */,
@@ -428,6 +439,7 @@
 				DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */,
 				DF07CD512264292000A20310 /* PreviewCell.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
+				DF07CD712265656C00A20310 /* AppFullscreenHeader.swift in Sources */,
 				DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */,
 				DF07CD17226124AC00A20310 /* AppRowCell.swift in Sources */,
 			);
