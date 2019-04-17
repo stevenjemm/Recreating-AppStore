@@ -13,7 +13,7 @@ class TodayController: BaseListController {
 //    fileprivate let todayCellId = "todayCellId"
 //    fileprivate let multipleAppCellId = "multipleAppCellId"
     var startingFrame: CGRect?
-    static let cellSize: CGFloat = 500
+    static let cellSize: CGFloat = 450
     
     var appFullscreenController: AppFullscreenController!
     var topConstraint: NSLayoutConstraint?

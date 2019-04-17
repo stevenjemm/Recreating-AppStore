@@ -24,7 +24,8 @@ class AppRowCell: UICollectionViewCell {
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)
         
-        getButton.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        companyLabel.textColor = UIColor(white: 0.75, alpha: 1)
+        getButton.backgroundColor = #colorLiteral(red: 0.9555082917, green: 0.9493837953, blue: 0.9556146264, alpha: 1)
         getButton.constrainHeight(constant: 32)
         getButton.constrainWidth(constant: 80)
         getButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)

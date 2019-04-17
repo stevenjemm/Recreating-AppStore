@@ -20,14 +20,13 @@ class TodayMultipleAppCell: BaseTodayCell {
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 16))
     let titleLabel = UILabel(text: "Utilizing your Time", font: .systemFont(ofSize: 24, weight: .semibold), numberOfLines: 0)
     
-    let multipleAppsController = UIViewController()
+    let multipleAppsController = TodayMultipleAppsController()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         layer.cornerRadius = 12
         backgroundColor = .white
-        multipleAppsController.view.backgroundColor = .red
         categoryLabel.textColor = UIColor(white: 0.4, alpha: 1)
         
         let stackView = VerticalStackView(arrangedSubviews: [
