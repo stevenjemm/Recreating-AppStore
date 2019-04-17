@@ -54,7 +54,7 @@ class TodayController: BaseListController {
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.item]
         appFullscreenController.dismissHandler = {
-            self.handleRemoveRedView()
+            self.handleRemoveAppFullscreen()
         }
         
         let fullscreenView = appFullscreenController.view!
@@ -63,6 +63,7 @@ class TodayController: BaseListController {
         addChild(appFullscreenController)
         
         self.appFullscreenController = appFullscreenController
+        self.collectionView.isUserInteractionEnabled = false
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -92,10 +93,17 @@ class TodayController: BaseListController {
             
             fullscreenView.layer.cornerRadius = 0
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            
+            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeader else { return }
+            let height = UIApplication.shared.statusBarFrame.height
+            
+            cell.todayCell.topConstraint.constant = height + 24
+            cell.layoutIfNeeded()
+            
         }, completion: nil)
     }
     
-    @objc func handleRemoveRedView() {
+    @objc func handleRemoveAppFullscreen() {
         
         guard let startingFrame = self.startingFrame else { return }
         
@@ -112,9 +120,16 @@ class TodayController: BaseListController {
             
             self.appFullscreenController.view.layer.cornerRadius = 16
             self.tabBarController?.tabBar.transform = CGAffineTransform.identity
+            
+            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeader else { return }
+            
+            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
+            
         }, completion: { _ in
             self.appFullscreenController.view.removeFromSuperview()
             self.appFullscreenController.removeFromParent()
+            self.collectionView.isUserInteractionEnabled = true     // Small bug where collection view in cell was still scrollable
         })
     }
 }
