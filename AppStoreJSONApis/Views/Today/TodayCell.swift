@@ -12,7 +12,7 @@ class TodayCell: BaseTodayCell {
     
     override var todayItem: TodayItem! {
         didSet {
-            categoryLabel.text = todayItem.category
+            categoryLabel.text = todayItem.category.uppercased()
             titleLabel.text = todayItem.title
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description

@@ -12,8 +12,11 @@ class TodayMultipleAppCell: BaseTodayCell {
     
     override var todayItem: TodayItem! {
         didSet {
-            categoryLabel.text = todayItem.category
+            categoryLabel.text = todayItem.category.uppercased()
             titleLabel.text = todayItem.title
+            
+            multipleAppsController.results = todayItem.apps
+            multipleAppsController.collectionView.reloadData()
         }
     }
     

@@ -20,18 +20,6 @@ class TodayMultipleAppsController: BaseListController {
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: multipleAppCellId)
         collectionView.isScrollEnabled = false
         
-        Service.shared.fetchTopGrossing { (result: Result<AppGroup, Error>) in
-            switch result {
-            case .success(let appGroup):
-                self.results = appGroup.feed.results
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print("Error fetching data: ", error.localizedDescription)
-            }
-        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

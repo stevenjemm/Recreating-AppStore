@@ -21,24 +21,87 @@ class TodayController: BaseListController {
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
-    let items = [
-        TodayItem(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
-        TodayItem(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9857699275, green: 0.9634901881, blue: 0.7310720086, alpha: 1), cellType: .single)
-    ]
+    var items = [TodayItem]()
+    
+    let activityIndicatorview: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        aiv.color = .darkGray
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(activityIndicatorview)
+        activityIndicatorview.centerInSuperview()
+        
+        fetchData()
         collectionView.backgroundColor = #colorLiteral(red: 0.9555082917, green: 0.9493837953, blue: 0.9556146264, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    fileprivate func fetchData() {
+        
+        let dispatchGroup = DispatchGroup()
+        
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (result: Result<AppGroup, Error>) in
+            switch result {
+            case .success(let appGroup):
+                print("We have data: ", appGroup.feed.results)
+                topGrossingGroup = appGroup
+                dispatchGroup.leave()
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+            case .failure(let error):
+                print("Error fetching data: ", error.localizedDescription)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (result: Result<AppGroup, Error>) in
+            switch result {
+            case .success(let appGroup):
+                print("We have games: ", appGroup.feed.results)
+                gamesGroup = appGroup
+                dispatchGroup.leave()
+                //                DispatchQueue.main.async {
+                //                    self.collectionView.reloadData()
+            //                }
+            case .failure(let error):
+                print("Error fetching data: ", error.localizedDescription)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue:.main) { [weak self] in
+            print("Finished fetching the apps")
+            self?.activityIndicatorview.stopAnimating()
+            
+            self?.items = [
+                TodayItem(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: UIImage(), description: "", backgroundColor: .white, apps: topGrossingGroup?.feed.results ?? [], cellType: .multiple),
+                TodayItem(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: UIImage(), description: "", backgroundColor: .white, apps: gamesGroup?.feed.results ?? [], cellType: .multiple),
+                TodayItem.init(category: "Life Hack", title: "All the tools ", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organise your life the right way.", backgroundColor: .white, apps: [], cellType: .single)
+            ]
+            
+            self?.collectionView.reloadData()
+        }
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
