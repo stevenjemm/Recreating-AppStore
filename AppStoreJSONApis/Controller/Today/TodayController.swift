@@ -45,9 +45,11 @@ class TodayController: BaseListController {
         print("Animate full Screen")
         
         let appFullscreenController = AppFullscreenController()
+        appFullscreenController.dismissHandler = {
+            self.handleRemoveRedView()
+        }
         
         let redView = appFullscreenController.view!
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         view.addSubview(redView)
         
         addChild(appFullscreenController)
@@ -85,14 +87,13 @@ class TodayController: BaseListController {
         }, completion: nil)
     }
     
-    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+    @objc func handleRemoveRedView() {
         
         guard let startingFrame = self.startingFrame else { return }
         
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
-            self.appFullscreenController.collectionView.contentOffset = .zero       // Scrolls cell back to the top for animation aesthetics
-            self.appFullscreenController.collectionViewLayout.invalidateLayout()    // Needed to remove collectionView log error
+            self.appFullscreenController.tableView.contentOffset = .zero       // Scrolls cell back to the top for animation aesthetics
             
             self.topConstraint?.constant = startingFrame.origin.y
             self.leadingConstraint?.constant = startingFrame.origin.x
@@ -101,10 +102,10 @@ class TodayController: BaseListController {
             
             self.view.layoutIfNeeded()
             
-            gesture.view?.layer.cornerRadius = 16
+            self.appFullscreenController.view.layer.cornerRadius = 16
             self.tabBarController?.tabBar.transform = CGAffineTransform.identity
         }, completion: { _ in
-            gesture.view?.removeFromSuperview()
+            self.appFullscreenController.view.removeFromSuperview()
             self.appFullscreenController.removeFromParent()
         })
     }

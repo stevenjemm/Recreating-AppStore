@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppFullscreenDescriptionCell: UICollectionViewCell {
+class AppFullscreenDescriptionCell: UITableViewCell {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
@@ -31,12 +31,12 @@ class AppFullscreenDescriptionCell: UICollectionViewCell {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-//        backgroundColor = #colorLiteral(red: 0.8971505165, green: 0.8977522254, blue: 0.9179338813, alpha: 1)
         addSubview(descriptionLabel)
         descriptionLabel.fillSuperview(padding: .init(top: 20, left: Constants.leftRightPadding, bottom: 20, right: Constants.leftRightPadding))
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

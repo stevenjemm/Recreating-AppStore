@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppFullscreenHeader: UICollectionReusableView {
+class AppFullscreenHeader: UITableViewCell {
 //
 //    var imageView: UIImageView = {
 //        let iv = UIImageView(image: #imageLiteral(resourceName: "garden"))
@@ -20,15 +20,14 @@ class AppFullscreenHeader: UICollectionReusableView {
     let closeButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "close_button"), for: .normal)
+        
         return btn
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-//        addSubview(imageView)
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.centerInSuperview(size: .init(width: 250, height: 250))
+        backgroundColor = .white
         addSubview(todayCell)
         todayCell.fillSuperview()
         
