@@ -19,6 +19,11 @@ class TodayController: BaseListController {
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
+    let items = [
+        TodayItem(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white),
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9857699275, green: 0.9634901881, blue: 0.7310720086, alpha: 1))
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,12 +37,14 @@ class TodayController: BaseListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellId, for: indexPath) as! TodayCell
-        cell.backgroundColor = .white
+        let item = items[indexPath.item]
+        cell.todayItem = item
+        
         return cell
     }
     
@@ -45,12 +52,13 @@ class TodayController: BaseListController {
         print("Animate full Screen")
         
         let appFullscreenController = AppFullscreenController()
+        appFullscreenController.todayItem = items[indexPath.item]
         appFullscreenController.dismissHandler = {
             self.handleRemoveRedView()
         }
         
-        let redView = appFullscreenController.view!
-        view.addSubview(redView)
+        let fullscreenView = appFullscreenController.view!
+        view.addSubview(fullscreenView)
         
         addChild(appFullscreenController)
         
@@ -63,13 +71,13 @@ class TodayController: BaseListController {
 
         self.startingFrame = startingFrame
         
-        redView.layer.cornerRadius = 16
-        redView.clipsToBounds = true
-        redView.translatesAutoresizingMaskIntoConstraints = false
-        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
-        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
-        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingFrame.width)
-        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        fullscreenView.layer.cornerRadius = 16
+        fullscreenView.clipsToBounds = true
+        fullscreenView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = fullscreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = fullscreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = fullscreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
 
         [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({ $0?.isActive = true })
         self.view.layoutIfNeeded()
@@ -82,7 +90,7 @@ class TodayController: BaseListController {
             self.heightConstraint?.constant = self.view.frame.height
             self.view.layoutIfNeeded()
             
-            redView.layer.cornerRadius = 0
+            fullscreenView.layer.cornerRadius = 0
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
         }, completion: nil)
     }

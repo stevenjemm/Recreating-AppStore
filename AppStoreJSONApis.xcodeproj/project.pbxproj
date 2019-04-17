@@ -49,6 +49,7 @@
 		DF07CD6D2265530F00A20310 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6C2265530F00A20310 /* AppFullscreenController.swift */; };
 		DF07CD6F2265551300A20310 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */; };
 		DF07CD712265656C00A20310 /* AppFullscreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */; };
+		DF07CD732266F64C00A20310 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD722266F64C00A20310 /* TodayItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		DF07CD6C2265530F00A20310 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
 		DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeader.swift; sourceTree = "<group>"; };
+		DF07CD722266F64C00A20310 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				DF07CD20226149FD00A20310 /* AppGroup.swift */,
 				DF07CD222262BB3800A20310 /* SocialApp.swift */,
 				DF07CD602264449F00A20310 /* Reviews.swift */,
+				DF07CD722266F64C00A20310 /* TodayItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				DF07CD66226528AE00A20310 /* TodayController.swift in Sources */,
 				DF07CCFF2260310900A20310 /* SearchResult.swift in Sources */,
 				DF07CCFB225FEF3600A20310 /* UIView+Layout.swift in Sources */,
+				DF07CD732266F64C00A20310 /* TodayItem.swift in Sources */,
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
 				DF07CD5922643A7100A20310 /* ReviewsController.swift in Sources */,
 				DF07CD132260D15100A20310 /* AppsGroupCell.swift in Sources */,
