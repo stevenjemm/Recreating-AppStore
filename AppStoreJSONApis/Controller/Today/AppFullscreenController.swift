@@ -13,7 +13,16 @@ class AppFullscreenController: UITableViewController {
     private let fullScreenCellId = "fullScreenCellId"
     private let headerId = "headerId"
     
-    var todayItem: TodayItem?
+    fileprivate let todayItem: TodayItem!
+    
+    init(todayItem: TodayItem) {
+        self.todayItem = todayItem
+        super.init(style: .plain)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var dismissHandler: (() -> ())?
     
@@ -50,8 +59,16 @@ class AppFullscreenController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.row == 0 {
-            return 450
+            let cellType = todayItem.cellType
+                
+            switch cellType {
+            case .single:
+                return 450
+            case.multiple:
+                return TodayController.cellSize
+            }
         }
         
         return super.tableView(tableView, heightForRowAt: indexPath)

@@ -50,6 +50,8 @@
 		DF07CD6F2265551300A20310 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */; };
 		DF07CD712265656C00A20310 /* AppFullscreenHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */; };
 		DF07CD732266F64C00A20310 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD722266F64C00A20310 /* TodayItem.swift */; };
+		DF07CD752267760200A20310 /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD742267760200A20310 /* TodayMultipleAppCell.swift */; };
+		DF07CD7722677FAC00A20310 /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF07CD7622677FAC00A20310 /* BaseTodayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeader.swift; sourceTree = "<group>"; };
 		DF07CD722266F64C00A20310 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
+		DF07CD742267760200A20310 /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
+		DF07CD7622677FAC00A20310 /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,8 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				DF07CD682265293B00A20310 /* TodayCell.swift */,
+				DF07CD742267760200A20310 /* TodayMultipleAppCell.swift */,
 				DF07CD6E2265551300A20310 /* AppFullscreenDescriptionCell.swift */,
 				DF07CD702265656C00A20310 /* AppFullscreenHeader.swift */,
+				DF07CD7622677FAC00A20310 /* BaseTodayCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				DF07CCE0225FD86100A20310 /* AppDelegate.swift in Sources */,
 				DF07CD5922643A7100A20310 /* ReviewsController.swift in Sources */,
 				DF07CD132260D15100A20310 /* AppsGroupCell.swift in Sources */,
+				DF07CD7722677FAC00A20310 /* BaseTodayCell.swift in Sources */,
 				DF07CD062260399200A20310 /* Service.swift in Sources */,
 				DF07CD252262E67B00A20310 /* HorizontalSnappingController.swift in Sources */,
 				DF07CD272262ECEF00A20310 /* BetterSnappingLayout.swift in Sources */,
@@ -442,6 +449,7 @@
 				DF07CD21226149FD00A20310 /* AppGroup.swift in Sources */,
 				DF07CD1F226144C200A20310 /* AppsHeaderCell.swift in Sources */,
 				DF07CD512264292000A20310 /* PreviewCell.swift in Sources */,
+				DF07CD752267760200A20310 /* TodayMultipleAppCell.swift in Sources */,
 				DF07CCFD225FF8F900A20310 /* VerticalStackView.swift in Sources */,
 				DF07CD712265656C00A20310 /* AppFullscreenHeader.swift in Sources */,
 				DF07CD152260D5D700A20310 /* AppsHorizontalController.swift in Sources */,

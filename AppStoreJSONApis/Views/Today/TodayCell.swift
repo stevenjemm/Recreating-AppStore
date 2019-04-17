@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TodayCell: UICollectionViewCell {
+class TodayCell: BaseTodayCell {
     
-    var todayItem: TodayItem! {
+    override var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
@@ -24,7 +24,7 @@ class TodayCell: UICollectionViewCell {
     
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 16))
     
-    let titleLabel = UILabel(text: "Utilizing your Time", font: .boldSystemFont(ofSize: 28))
+    let titleLabel = UILabel(text: "Utilizing your Time", font: .boldSystemFont(ofSize: 28), numberOfLines: 0)
     
     let imageView = UIImageView(image: #imageLiteral(resourceName: "garden"))
     

@@ -10,8 +10,10 @@ import UIKit
 
 class TodayController: BaseListController {
     
-    fileprivate let todayCellId = "todayCellId"
+//    fileprivate let todayCellId = "todayCellId"
+//    fileprivate let multipleAppCellId = "multipleAppCellId"
     var startingFrame: CGRect?
+    static let cellSize: CGFloat = 500
     
     var appFullscreenController: AppFullscreenController!
     var topConstraint: NSLayoutConstraint?
@@ -20,15 +22,17 @@ class TodayController: BaseListController {
     var heightConstraint: NSLayoutConstraint?
     
     let items = [
-        TodayItem(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9857699275, green: 0.9634901881, blue: 0.7310720086, alpha: 1))
+        TodayItem(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
+        TodayItem(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single),
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9857699275, green: 0.9634901881, blue: 0.7310720086, alpha: 1), cellType: .single)
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.backgroundColor = #colorLiteral(red: 0.9555082917, green: 0.9493837953, blue: 0.9556146264, alpha: 1)
-        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: todayCellId)
+        collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
+        collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,18 +45,20 @@ class TodayController: BaseListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayCellId, for: indexPath) as! TodayCell
-        let item = items[indexPath.item]
-        cell.todayItem = item
+        
+        let cellId = items[indexPath.item].cellType.rawValue
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
+        cell.todayItem = items[indexPath.item]
         
         return cell
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Animate full Screen")
         
-        let appFullscreenController = AppFullscreenController()
-        appFullscreenController.todayItem = items[indexPath.item]
+        let appFullscreenController = AppFullscreenController(todayItem: items[indexPath.item])
         appFullscreenController.dismissHandler = {
             self.handleRemoveAppFullscreen()
         }
@@ -138,7 +144,16 @@ extension TodayController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return .init(width: view.frame.width - (Constants.leftRightPadding * 2), height: 450)
+        let item = items[indexPath.item]
+        let cellWidth = view.frame.width - (Constants.leftRightPadding * 2)
+        
+        switch item.cellType {
+        case .single:
+            return .init(width: cellWidth, height: 450)
+        case.multiple:
+            return .init(width: cellWidth, height: TodayController.cellSize)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
