@@ -17,24 +17,24 @@ class AppFullscreenController: BaseListController {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(AppFullscreenDescriptionCell.self, forCellWithReuseIdentifier: fullScreenCellId)
         collectionView.register(AppFullscreenHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView.contentInsetAdjustmentBehavior = .never
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fullScreenCellId, for: indexPath) // as! TodayCell
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fullScreenCellId, for: indexPath)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppFullscreenHeader
-        
+
         return header
     }
     
@@ -43,7 +43,7 @@ class AppFullscreenController: BaseListController {
 extension AppFullscreenController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let size: CGSize = .init(width: view.frame.width, height: 1000)
         let dummyCell = AppFullscreenDescriptionCell(frame: .init(origin: .zero, size: size))
         let attributedText = NSMutableAttributedString(string: "Great Games", attributes: [.foregroundColor: UIColor.black])
@@ -66,6 +66,14 @@ extension AppFullscreenController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+//        let size: CGSize = .init(width: view.frame.width, height: 450)
+//        let dummyHeaderCell = AppFullscreenHeader(frame: .init(origin: .zero, size: size))
+//        dummyHeaderCell.todayCell = TodayCell()
+//        dummyHeaderCell.layoutIfNeeded()
+//        
+//        let estimatedSize = dummyHeaderCell.systemLayoutSizeFitting(size)
+        
         return .init(width: view.frame.width, height: 450)
     }
 }

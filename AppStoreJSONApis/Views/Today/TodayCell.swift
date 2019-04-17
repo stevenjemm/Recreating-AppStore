@@ -15,13 +15,14 @@ class TodayCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
+//        backgroundColor = .white
         layer.cornerRadius = 16
         
         addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.centerInSuperview(size: .init(width: 250, height: 250))
-//        clipsToBounds = true
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
