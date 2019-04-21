@@ -71,7 +71,7 @@ class TodayMultipleAppsController: BaseListController {
     
     fileprivate func setupCloseButton() {
         view.addSubview(closeButton)
-        closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 16), size: .init(width: 44, height: 44))
+        closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 16), size: .init(width: 50, height: 50))
     }
     
     @objc func handleDismiss() {

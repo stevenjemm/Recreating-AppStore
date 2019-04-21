@@ -117,6 +117,7 @@ class TodayController: BaseListController {
         cell.todayItem = items[indexPath.item]
         
         (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap(gesture:))))
+//        (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.isUserInteractionEnabled = false     // Allows touchdown animation to occur on embedded collectionView
         
         return cell
         
