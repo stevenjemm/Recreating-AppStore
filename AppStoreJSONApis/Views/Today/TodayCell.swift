@@ -16,7 +16,8 @@ class TodayCell: BaseTodayCell {
             titleLabel.text = todayItem.title
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
-            backgroundColor = todayItem.backgroundColor
+//            backgroundColor = todayItem.backgroundColor
+            backgroundView?.backgroundColor = todayItem.backgroundColor
         }
     }
     
@@ -33,10 +34,10 @@ class TodayCell: BaseTodayCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
-        layer.cornerRadius = 16
-        clipsToBounds = true
+//        backgroundColor = .white
+        
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         categoryLabel.textColor = UIColor(white: 0.4, alpha: 1)
         
         let imageContainer = UIView()

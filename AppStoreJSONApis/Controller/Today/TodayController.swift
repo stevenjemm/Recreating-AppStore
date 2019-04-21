@@ -47,6 +47,7 @@ class TodayController: BaseListController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.superview?.setNeedsLayout()
     }
     
     fileprivate func fetchData() {
@@ -95,7 +96,8 @@ class TodayController: BaseListController {
             self?.items = [
                 TodayItem(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: UIImage(), description: "", backgroundColor: .white, apps: topGrossingGroup?.feed.results ?? [], cellType: .multiple),
                 TodayItem(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: UIImage(), description: "", backgroundColor: .white, apps: gamesGroup?.feed.results ?? [], cellType: .multiple),
-                TodayItem.init(category: "Life Hack", title: "All the tools ", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organise your life the right way.", backgroundColor: .white, apps: [], cellType: .single)
+                TodayItem.init(category: "Life Hack", title: "All the tools", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organise your life the right way.", backgroundColor: .white, apps: [], cellType: .single),
+                TodayItem.init(category: "Holidays", title: "All the tools", image: #imageLiteral(resourceName: "holiday"), description: "All the tools and apps you need to intelligently organise your life the right way.", backgroundColor: #colorLiteral(red: 0.9853100181, green: 0.9683170915, blue: 0.7212222219, alpha: 1), apps: [], cellType: .single)
             ]
             
             self?.collectionView.reloadData()
@@ -114,12 +116,23 @@ class TodayController: BaseListController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
         
+        (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap(gesture:))))
+        
         return cell
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Animate full Screen")
+        
+        if items[indexPath.item].cellType == .multiple {
+            
+            let fullController = TodayMultipleAppsController(mode: .fullscreen)
+            fullController.apps = self.items[indexPath.item].apps
+            fullController.view.backgroundColor = .red
+            present(BackEnabledNavigationController(rootViewController: fullController), animated: true, completion: nil)
+            return
+        }
         
         let appFullscreenController = AppFullscreenController(todayItem: items[indexPath.item])
         appFullscreenController.dismissHandler = {
@@ -170,6 +183,28 @@ class TodayController: BaseListController {
             cell.layoutIfNeeded()
             
         }, completion: nil)
+    }
+    
+    @objc func handleMultipleAppsTap(gesture: UIGestureRecognizer) {
+        let collectionView = gesture.view
+        
+        var superView = collectionView?.superview
+        
+        while superView != nil {
+            if let cell = superView as? TodayMultipleAppCell {
+                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+                
+                let apps = self.items[indexPath.item].apps
+                let fullController = TodayMultipleAppsController(mode: .fullscreen)
+                fullController.apps = apps
+                present(BackEnabledNavigationController(rootViewController: fullController), animated: true, completion: nil)
+                return
+                
+            }
+            
+            superView = superView?.superview
+        }
+        
     }
     
     @objc func handleRemoveAppFullscreen() {
