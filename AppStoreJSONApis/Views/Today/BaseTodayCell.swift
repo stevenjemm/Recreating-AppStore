@@ -15,13 +15,13 @@ class BaseTodayCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             var transform: CGAffineTransform = .identity
-            
+
             if isHighlighted {
                 transform = .init(scaleX: 0.9, y: 0.9)
                 
             }
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.allowUserInteraction, .curveEaseOut], animations: {
                 self.transform = transform
             }, completion: nil)
         }
@@ -45,4 +45,5 @@ class BaseTodayCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }
