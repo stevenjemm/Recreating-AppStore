@@ -15,6 +15,13 @@ class AppFullscreenController: UITableViewController {
     
     fileprivate let todayItem: TodayItem!
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == tableView && tableView.contentOffset.y < 0 {
+            tableView.isScrollEnabled = false
+            tableView.isScrollEnabled = true    // Not the best solution
+        }
+    }
+    
     init(todayItem: TodayItem) {
         self.todayItem = todayItem
         super.init(style: .plain)
