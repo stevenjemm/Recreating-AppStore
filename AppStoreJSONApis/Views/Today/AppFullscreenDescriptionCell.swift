@@ -25,6 +25,38 @@ class AppFullscreenDescriptionCell: UITableViewCell {
         
         attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
         
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
+        attributedText.append(NSAttributedString(string: " \n\n\nHerois adventure", attributes: [.foregroundColor : UIColor.black]))
+        
+        attributedText.append(NSAttributedString(string: "\nBattle in dungeons. Collect treasure. Solve puzzles. Sail to new lands. Oceanhorn lets you do it all in a beautifully detailed world.", attributes: [.foregroundColor : UIColor.gray]))
+        
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.attributedText = attributedText
         label.numberOfLines = 0

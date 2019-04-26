@@ -292,7 +292,8 @@ class TodayController: BaseListController {
         
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
-            self.appFullscreenController.tableView.contentOffset = .zero       // Scrolls cell back to the top for animation aesthetics
+//            self.appFullscreenController.tableView.contentOffset = .zero       // Scrolls cell back to the top for animation aesthetics
+            self.appFullscreenController.tableView.scrollToRow(at: .init(row: 0, section: 0), at: .top, animated: true)
             self.blurVisualEffectView.alpha = 0
             self.appFullscreenController.view.transform = .identity
             
@@ -308,6 +309,7 @@ class TodayController: BaseListController {
             
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeader else { return }
             
+            self.appFullscreenController.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
             

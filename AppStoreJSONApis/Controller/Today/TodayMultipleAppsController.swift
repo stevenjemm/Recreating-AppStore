@@ -14,7 +14,6 @@ class TodayMultipleAppsController: BaseListController {
     var apps = [FeedResult]()
     
     fileprivate let mode: Mode
-    var isHidingingStatusBar: Bool = false
     
     enum Mode {
         case small
@@ -61,13 +60,13 @@ class TodayMultipleAppsController: BaseListController {
 //            navigationController?.navigationBar.isHidden = true
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
-            self.isHidingingStatusBar = true
+//            self.isHidingingStatusBar = true
 //            setNeedsStatusBarAppearanceUpdate()
 
         }
     }
     
-    override var prefersStatusBarHidden: Bool { return true }
+//    override var prefersStatusBarHidden: Bool { return true }
     
     fileprivate func setupCloseButton() {
         view.addSubview(closeButton)
