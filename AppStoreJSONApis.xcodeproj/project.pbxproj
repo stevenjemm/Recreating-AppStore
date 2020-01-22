@@ -236,6 +236,7 @@
 		DF07CD0D2260CF0700A20310 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				DF73C11323D8BF4A00E249CA /* Compositional */,
 				DF07CD4C2263E17900A20310 /* Details */,
 				DF07CD0B2260CEBF00A20310 /* AppsPageController.swift */,
 				DF07CD142260D5D700A20310 /* AppsHorizontalController.swift */,
@@ -308,6 +309,13 @@
 				DF07CD7A2267A14100A20310 /* MultipleAppCell.swift */,
 			);
 			path = Today;
+			sourceTree = "<group>";
+		};
+		DF73C11323D8BF4A00E249CA /* Compositional */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Compositional;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
