@@ -92,6 +92,8 @@ class CompositionController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        view.addSubview(activityIndicatorView)
+//        activityIndicatorView.centerInSuperview()
         collectionView.register(CompositionalHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: "smallCellId")
         collectionView.register(AppsHeaderCell.self, forCellWithReuseIdentifier: "cellId")
@@ -280,6 +282,7 @@ class CompositionController: UICollectionViewController {
                                         self.freeApps = freeApps
                                         
                                         DispatchQueue.main.async {
+//                                            self.activityIndicatorView.stopAnimating()
                                             self.collectionView.reloadData()
                                         }
                                     case .failure(let error):
@@ -300,8 +303,44 @@ class CompositionController: UICollectionViewController {
         }
     }
     
+    enum AppSection {
+        case topSocial
+        case grossing
+    }
+    
+    lazy var diffableDatasource: UICollectionViewDiffableDataSource<AppSection, SocialApp> = .init(collectionView: self.collectionView) { (collectionView, indexPath, socialApp) -> UICollectionViewCell? in
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! AppsHeaderCell
+        cell.app = socialApp
+        
+        return cell
+    }
+    
     private func setupDiffableDatasource() {
         
+        // Adding Data
+//        var snapshot = diffableDatasource.snapshot()
+//        snapshot.appendSections([.topSocial])
+//        snapshot.appendItems([
+//            SocialApp(id: "1d0", name: "name0", imageUrl: "image1", tagline: "tagline"),
+//            SocialApp(id: "1d1", name: "name0", imageUrl: "image1", tagline: "tagline")
+//        ], toSection: .topSocial)
+//
+//        diffableDatasource.apply(snapshot)
+        
+        Service.shared.fetchSocialApps { (appResults) in
+            
+            switch appResults {
+            case .success(let socialApps):
+                var snapshot = self.diffableDatasource.snapshot()
+                snapshot.appendSections([.topSocial])
+                snapshot.appendItems(socialApps, toSection: .topSocial)
+                
+                self.diffableDatasource.apply(snapshot)
+            case .failure(let error):
+                print("Error getting Social Apps: ", error)
+            }
+        }
     }
 }
 
