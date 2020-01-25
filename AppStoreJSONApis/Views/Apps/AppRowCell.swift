@@ -31,7 +31,8 @@ class AppRowCell: UICollectionViewCell {
         getButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         getButton.layer.cornerRadius = 32 / 2
         
-        let stackView = UIStackView(arrangedSubviews: [imageView, VerticalStackView(arrangedSubviews: [nameLabel, companyLabel], spacing: 4), getButton])
+        let stackView = UIStackView(arrangedSubviews: [imageView, VerticalStackView(arrangedSubviews: [nameLabel,
+                                                                                                       companyLabel], spacing: 4), getButton])
         stackView.spacing = 16
         stackView.alignment = .center
         addSubview(stackView)

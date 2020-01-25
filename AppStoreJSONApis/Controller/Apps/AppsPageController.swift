@@ -17,7 +17,7 @@ class AppsPageController: BaseListController {
     var socialApps = [SocialApp]()
     
     let activityIndicatorView: UIActivityIndicatorView = {
-        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        let aiv = UIActivityIndicatorView(style: .large)
         aiv.color = .black
         aiv.hidesWhenStopped = true
         aiv.startAnimating()

@@ -29,6 +29,7 @@ class AppsHeaderCell: UICollectionViewCell {
         
         titleLabel.numberOfLines = 0
         companyLabel.textColor = .blue
+        imageView.image = #imageLiteral(resourceName: "holiday")
         
         let stackView = VerticalStackView(arrangedSubviews: [companyLabel, titleLabel, imageView], spacing: 12)
         addSubview(stackView)
